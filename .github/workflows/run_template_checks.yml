@@ -35,6 +35,7 @@ jobs:
         run: |
           cd design-toolkit-application
           ./ci/linux/test_unit.sh
+          ls -alh
 
       - name: Surface failing tests
         if: always()
