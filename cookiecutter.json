@@ -6,7 +6,7 @@
   "python_import_name": "{{ cookiecutter.repo_name|replace('-', '') }}",
   "project_short_description": "A description on what this application within the Design Toolkit entails.",
   "publish_container": true,
-  "docker_username": "audrey",
+  "github_username": "project-omotes",
   "container_name": "design-toolkit-application",
   "python_version": "3.11",
   "_copy_without_render": [
