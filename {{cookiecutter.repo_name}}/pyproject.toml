@@ -23,18 +23,22 @@ dependencies = ["coloredlogs~=15.0.1"]
 
 [project.optional-dependencies]
 dev = [
-    "setuptools ~= 69.0.3",
-    "wheel ~= 0.40.0",
-    "setuptools-git-versioning < 2",
-    "black~=22.1.0",
-    "flake8==6.0.0",
-    "Flake8-pyproject==1.2.3",
-    "pytest ~=7.3.1",
-    "pytest-cov ~=4.0.0",
-    "bump2version==1.0.1",
-    "mypy ~= 1.5.1",
-    "isort==5.13.2",
-    "build ~= 1.0.3",
+    "setuptools ~= 75.6.0",
+    "wheel ~= 0.45.1",
+    "setuptools-git-versioning >= 2.0, < 3",
+    "black ~= 24.10.0",
+    "flake8 == 7.1.1",
+    "flake8-pyproject ~= 1.2.3",
+    "flake8-docstrings ~= 1.7.0",
+    "flake8-quotes ~= 3.4.0",
+    "flake8-bugbear ~= 24.10.31",
+    "flake8-mock ~= 0.4",
+    "flake8-tuple ~= 0.4.1",
+    "pytest ~= 8.3.4",
+    "pytest-cov ~= 6.0.0",
+    "mypy ~= 1.13.0",
+    "isort == 5.13.2",
+    "build ~= 1.2.2",
 ]
 
 [project.urls]
@@ -49,17 +53,17 @@ changelog = "https://github.com/Nieuwe-Warmte-Nu/{{cookiecutter.repo_name}}/blob
 [build-system]
 build-backend = "setuptools.build_meta"
 requires = [
-    "setuptools ~= 69.0.3",
-    "wheel ~= 0.40.0",
-    "setuptools-git-versioning<2",
+    "setuptools ~= 75.6.0",
+    "wheel ~= 0.45.1",
+    "setuptools-git-versioning >= 2.0, < 3",
 ]
+
+[tool.setuptools.package-data]
+"{{cookiecutter.python_import_name}}" = ["py.typed"]
 
 [tool.setuptools-git-versioning]
 enabled = true
-version_file = "VERSION"
-count_commits_from_version_file = true
-dev_template = "{tag}.dev{ccount}"
-dirty_template = "{tag}.dev{ccount}"
+starting_version = "0.0.1"
 
 [tool.pytest.ini_options]
 addopts = "--cov={{cookiecutter.python_import_name}} --cov-report html --cov-report term-missing --cov-fail-under 80"
@@ -76,8 +80,10 @@ ignore = [
     'E203', # Space before colon (not PEP-8 compliant, and conflicts with black)
     'C408', # Suggestion to use dict() over {}
     'W503', # Starting lines with operators.
+    'D104', # Missing docstring in public package
+    'D100'  # Missing docstring in public module
 ]
-per-file-ignores = ['__init__.py:F401', 'test_main.py:D100,D101,D102,D103']
+per-file-ignores = ['__init__.py:F401', 'test_*.py:D100,D101,D102,D103']
 max-line-length = 100
 count = true
 
